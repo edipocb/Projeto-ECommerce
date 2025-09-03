@@ -64,11 +64,26 @@ SELECT * FROM ecommerce.cliente WHERE telefone like '%11%';
 
 -- Exercicio 4 
 INSERT INTO ecommerce.produto(nome_produto, descricao, preco, estoque_disponivel, imagem_url) VALUES
-('Meiao', 'Jogo', '40', 55, 'Teste_email')
+('Luva', 'Jogo', '350', 70, 'Teste_email')
+
+SELECT * FROM ecommerce.produto
+WHERE preco < 500.00 AND estoque_disponivel >= 50;
+SELECT * FROM ecommerce.produto
+
+-- Exercicio 5 
+SELECT * FROM ecommerce.produto ORDER BY preco ASC;
+
+-- Exercicio 6
+SELECT * FROM ecommerce.cliente ORDER BY data_cadastro DESC LIMIT 2;
+-- **Exercício:** Mostre os 2 primeiros clientes que se cadastraram no sistema (os mais antigos).
+-- **Dica:** Após ordenar com `ORDER BY`, use o comando `LIMIT` para restringir o número de resultados.
 
 
-
-
-
+SELECT 
+	pedido_id,
+	nome_completo
+FROM ecommerce.pedido
+JOIN ecommerce.cliente
+ON	ecommerce.cliente.cliente_id = ecommerce.cliente.cliente_id;
 
 

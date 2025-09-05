@@ -5,13 +5,13 @@
 
 
 INSERT INTO ecommerce.cliente(nome_completo, email, senha, telefone, data_cadastro) VALUES
-('Joao Batista', 'edipocb12@email.com', 'Teste@123', 11963245544, '2025-08-28')
+('Cristiano Batista', 'edipocb123@email.com', 'Teste@123', 11963245544, '2025-08-28')
 
 SELECT * FROM ecommerce.cliente;
 
 
 INSERT INTO ecommerce.produto(nome_produto, descricao, preco, estoque_disponivel, imagem_url)
-VALUES ('Regata', 'Basquete', 400.00, 50, 'www.pdv/tenis')
+VALUES ('Tenis', 'Basquete', 700.00, 50, 'www.pdv/tenis')
 
 SELECT * FROM ecommerce.produto;
 

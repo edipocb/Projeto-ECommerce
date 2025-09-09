@@ -20,6 +20,9 @@ VALUES ('2025-05-20', 500.00, 'Pago', 1)
 SElECT * FROM ecommerce.pedido;
 
 
+INSERT INTO ecommerce.pagamento(status, data_pagamento, pedido_id)
+VALUES ('Criado', '2025-09-09', 1);
+select * from ecommerce.pagamento;
 
 
 

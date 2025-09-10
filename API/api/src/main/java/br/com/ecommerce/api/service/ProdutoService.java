@@ -3,6 +3,7 @@ package br.com.ecommerce.api.service;
 
 import br.com.ecommerce.api.model.Produto;
 import br.com.ecommerce.api.repository.ProdutoRepository;
+import jakarta.persistence.criteria.CriteriaBuilder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,5 +22,9 @@ public class ProdutoService {
 
     public Produto cadastrarProduto(Produto produto) {
         return produtoRepository.save(produto);
+    }
+
+    public Produto buscarPorId(Integer id) {
+        return produtoRepository.findById(id).orElse(null);
     }
 }

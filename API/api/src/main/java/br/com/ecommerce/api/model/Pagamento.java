@@ -1,6 +1,7 @@
 package br.com.ecommerce.api.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,6 +15,10 @@ public class Pagamento {
     @Id
     @Column(name = "pagamento_id", nullable = false)
     private Integer id;
+
+    @NotNull
+    @Column(name = "forma_pagamento", nullable = false, length = Integer.MAX_VALUE)
+    private String formaPagamento;
 
     @Column(name = "status", nullable = false, length = Integer.MAX_VALUE)
     private String status;

@@ -27,4 +27,14 @@ public class ProdutoService {
     public Produto buscarPorId(Integer id) {
         return produtoRepository.findById(id).orElse(null);
     }
+
+    public Produto deletarProduto(Integer id) {
+        Produto produto = buscarPorId(id);
+
+        if (produto == null) {
+            return null;
+        }
+        produtoRepository.delete(produto);
+        return produto;
+    }
 }

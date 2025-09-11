@@ -35,7 +35,7 @@ public class ClienteService {
         return clienteRepository.findById(id).orElse(null);
     }
 
-    public Cliente deletarCLiente(Integer id) {
+    public Cliente deletarCliente(Integer id) {
         //1. Verifico se  cliene existe
         Cliente cliente = buscarPorId(id);
 
@@ -47,4 +47,26 @@ public class ClienteService {
         clienteRepository.delete(cliente);
         return cliente;
     }
+
+    // Atualizar/Editar
+
+    public Cliente atualizarCliente(Integer id, Cliente clienteNovo) {
+    // 1. Procurar quem eu quero atualizar
+        Cliente clienteAntigo = buscarPorId(id);
+
+
+    // 2. Se eu nao achar, retorno nulo
+        if (clienteAntigo == null) {
+            return null;
+        }
+
+    // 3. Se eu achar eu atualizo
+    clienteAntigo.setSenha(clienteNovo.getSenha());
+    clienteAntigo.setNomeCompleto(clienteNovo.getNomeCompleto());
+    clienteAntigo.setEmail(clienteNovo.getEmail());
+    clienteAntigo.setDataCadastro(clienteNovo.getDataCadastro());
+    return clienteRepository.save(clienteAntigo);
+    }
+
+
 }

@@ -41,6 +41,15 @@ public class ProdutoController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Produto "+ id + " nao encontrado");
         }
         return ResponseEntity.ok(produto);
+    }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deletarProdutoPorId(@PathVariable Integer id) {
+        Produto produto = produtoService.deletarProduto(id);
+
+        if (produto == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Produto "+ id + " nao encontrado");
+                    }
+        return ResponseEntity.ok(produto);
 
     }
 }

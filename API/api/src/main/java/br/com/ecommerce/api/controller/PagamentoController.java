@@ -3,6 +3,7 @@ package br.com.ecommerce.api.controller;
 
 import br.com.ecommerce.api.model.Pagamento;
 import br.com.ecommerce.api.service.PagamentoService;
+import jakarta.persistence.criteria.CriteriaBuilder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -33,5 +34,26 @@ public class PagamentoController {
     ) {
         pagamentoService.cadastrarPagamento(pagamento);
         return ResponseEntity.status(HttpStatus.CREATED).body(pagamento);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> buscarPagamentoPorId(@PathVariable Integer id){
+        Pagamento pagamento = pagamentoService.buscarPorId(id);
+
+        if (pagamento == null){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Pagamento " + id + " nao encontrado");
+        }
+        return ResponseEntity.ok(pagamento);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deletarPagamentoPorId(@PathVariable Integer id){
+        Pagamento pagamento = pagamentoService.deletarPagamento(id);
+
+        if (pagamento == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Pagamento " + id + " nao encontrado");
+        }
+
+        return ResponseEntity.ok(pagamento);
     }
 }

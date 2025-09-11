@@ -29,4 +29,27 @@ public class PedidoController {
         pedidoService.cadastrarPedido(pedido);
         return ResponseEntity.status(HttpStatus.CREATED).body(pedido);
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> buscarPedidoPorId(@PathVariable Integer id) {
+        Pedido pedido = pedidoService.buscarPorId(id);
+        if (pedido == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Pedido " + id + " nao encontrado");
+        }
+        return ResponseEntity.ok(pedido);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deletarPedidoPorId(@PathVariable Integer id) {
+
+        Pedido pedido = pedidoService.deletarPedido(id);
+
+        if (pedido == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Pedido " + id + " nao encontrado");
+        }
+
+        return ResponseEntity.ok(pedido);
+
+    }
+
 }

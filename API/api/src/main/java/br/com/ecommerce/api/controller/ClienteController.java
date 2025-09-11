@@ -68,7 +68,7 @@ public class ClienteController {
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deletarClientePorId(@PathVariable Integer id) {
         // 1. Verifico se o cliente existe
-        Cliente cliente = clienteService.deletarCLiente(id);
+        Cliente cliente = clienteService.deletarCliente(id);
 
         // 2. se nao existir, retorno nulo
         if (cliente == null) {
@@ -79,7 +79,20 @@ public class ClienteController {
         return ResponseEntity.ok(cliente);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<?> atualizaClientePor(
+            @PathVariable Integer id, @RequestBody Cliente clienteNovo) {
+
+        // 1. Tento atualizar o cliente
+
+        Cliente cl = clienteService.atualizarCliente(id, clienteNovo);
 
 
-
+        // 2. Se nao achar o cliente, mostro o erro
+        if (cl == null) {
+            return ResponseEntity.status(404).body("Cliente nao encontrado!");
+        }
+        // 3. Se achar retorno OK
+        return ResponseEntity.ok(cl);
+    }
 }

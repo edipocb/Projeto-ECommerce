@@ -10,6 +10,7 @@ import lombok.Setter;
 @Table(name = "item_do_pedido", schema = "ecommerce")
 public class ItemDoPedido {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "item_id", nullable = false)
     private Integer id;
 

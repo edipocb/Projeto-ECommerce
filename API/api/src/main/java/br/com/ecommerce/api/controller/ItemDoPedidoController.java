@@ -3,6 +3,7 @@ package br.com.ecommerce.api.controller;
 import br.com.ecommerce.api.model.ItemDoPedido;
 import br.com.ecommerce.api.repository.ItemDoPedidoRepository;
 import br.com.ecommerce.api.service.ItemDoPedidoService;
+import org.hibernate.cache.spi.support.AbstractReadWriteAccess;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -55,5 +56,15 @@ public class ItemDoPedidoController {
         return ResponseEntity.ok(itemDoPedido);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<?> atualizarItemPorId(
+            @PathVariable Integer id, @RequestBody ItemDoPedido itemNovo) {
+        ItemDoPedido it = itemDoPedidoService.atualizarItemDoPedido(id, itemNovo);
+
+        if (it == null) {
+            return ResponseEntity.status(404).body("Item nao encontrado!");
+        }
+        return ResponseEntity.ok(it);
+    }
 }
 

@@ -3,6 +3,7 @@ package br.com.ecommerce.api.service;
 import br.com.ecommerce.api.model.ItemDoPedido;
 import br.com.ecommerce.api.repository.ItemDoPedidoRepository;
 import jakarta.persistence.criteria.CriteriaBuilder;
+import org.hibernate.cache.spi.support.AbstractReadWriteAccess;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -35,5 +36,18 @@ public class ItemDoPedidoService {
         }
         itemDoPedidoRepository.delete(itemDoPedido);
         return itemDoPedido;
+    }
+
+    public ItemDoPedido atualizarItemDoPedido(Integer id,  ItemDoPedido itemNovo){
+        ItemDoPedido itemAntigo = buscarPorId(id);
+
+        if (itemAntigo == null) {
+            return null;
+        }
+
+        itemAntigo.setPedido(itemNovo.getPedido());
+        itemAntigo.setProduto(itemNovo.getProduto());
+        itemAntigo.setQuantidade(itemNovo.getQuantidade());
+        return itemDoPedidoRepository.save(itemAntigo);
     }
 }

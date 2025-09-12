@@ -2,6 +2,7 @@ package br.com.ecommerce.api.controller;
 
 import br.com.ecommerce.api.model.Cliente;
 import br.com.ecommerce.api.service.ClienteService;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,6 +27,10 @@ public class ClienteController {
     // Listar todos
     // @GetMapping um metodo que te da acesso a uma porta
     @GetMapping
+    @Operation(
+            summary = "Lista todos os clientes",
+            description = "Lista todos os clientes sem nenhuma restricao"
+    )
     public ResponseEntity<List<Cliente>> listarClientes() {
         // 1. Pegar lista de clientes
         List<Cliente> clientes = clienteService.listarTodos();

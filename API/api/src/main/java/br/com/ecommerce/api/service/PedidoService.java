@@ -39,4 +39,17 @@ public class PedidoService {
         return pedido;
     }
 
+    public Pedido atualizarPedido(Integer id, Pedido pedidoNovo) {
+        Pedido pedidoAntigo = buscarPorId(id);
+
+        if (pedidoAntigo == null) {
+            return null;
+        }
+        pedidoAntigo.setDataPedido(pedidoNovo.getDataPedido());
+        pedidoAntigo.setCliente(pedidoNovo.getCliente());
+        pedidoAntigo.setStatus(pedidoNovo.getStatus());
+        pedidoAntigo.setValorTotal(pedidoNovo.getValorTotal());
+        return pedidoRepository.save(pedidoAntigo);
+
+    }
 }

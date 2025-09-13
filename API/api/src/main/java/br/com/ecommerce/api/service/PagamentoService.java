@@ -39,4 +39,18 @@ public class PagamentoService {
         return pagamento;
     }
 
+    public Pagamento atualizarPagamento(Integer id, Pagamento pagamentoNovo){
+        Pagamento pagamentoAntigo = buscarPorId(id);
+
+        if (pagamentoAntigo == null) {
+            return null;
+        }
+
+        pagamentoAntigo.setDataPagamento(pagamentoNovo.getDataPagamento());
+        pagamentoAntigo.setFormaPagamento(pagamentoNovo.getFormaPagamento());
+        pagamentoAntigo.setStatus(pagamentoNovo.getStatus());
+        pagamentoAntigo.setPedido(pagamentoNovo.getPedido());
+        return pagamentoRepository.save(pagamentoAntigo);
+    }
+
 }

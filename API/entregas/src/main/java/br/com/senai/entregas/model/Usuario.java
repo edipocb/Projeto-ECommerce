@@ -33,5 +33,13 @@ public class Usuario {
     @Column(name = "senha", nullable = false)
     private String senha;
 
+    // Muitos USUÁRIOS para um TIPO USUÁRIO
+    // FetchType.EAGER - Carrega os dados juntos
+    // optional - Se é obrigatório ou não
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    // Avisar para o Java, qual coluna do tipo usuario que vou
+    // relacionar
+    @JoinColumn(name = "tipo_usuario_id")
+    private TipoUsuario tipoUsuario;
 
 }

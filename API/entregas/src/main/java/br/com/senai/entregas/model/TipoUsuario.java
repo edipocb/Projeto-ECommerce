@@ -36,4 +36,6 @@ public class TipoUsuario {
             , columnDefinition = "TEXT")
     private String descricao;
 
+
+
 }

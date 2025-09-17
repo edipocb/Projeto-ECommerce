@@ -14,17 +14,21 @@ public class ProdutoService {
     private final ProdutoRepository produtoRepository;
 
     public ProdutoService(ProdutoRepository repo) {
+
         produtoRepository = repo;
     }
+
     public List<Produto> listarTodos(){
         return produtoRepository.findAll();
     }
 
     public Produto cadastrarProduto(Produto produto) {
+
         return produtoRepository.save(produto);
     }
 
     public Produto buscarPorId(Integer id) {
+
         return produtoRepository.findById(id).orElse(null);
     }
 

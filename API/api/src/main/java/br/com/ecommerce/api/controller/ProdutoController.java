@@ -16,6 +16,7 @@ public class ProdutoController {
     private ProdutoService produtoService;
 
     public ProdutoController(ProdutoService service){
+
         produtoService =  service;
     }
 

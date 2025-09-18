@@ -23,10 +23,6 @@ public class Endereco {
     @Column(name= "endereco_id", nullable = false)
     private Integer enderecoId;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "usuario_id")
-    private Usuario usuario; // nao e o nome da coluna. E o nome do campo
-
     @Column(name = "logradouro", nullable = false, columnDefinition = "TEXT")
     private String logradouro;
 
@@ -38,5 +34,10 @@ public class Endereco {
 
     @Column(name="cep", nullable = false, length = 10)
     private String cep;
+
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "usuario_id")
+    private Usuario usuario; // nao e o nome da coluna. E o nome do campo
+
 
 }

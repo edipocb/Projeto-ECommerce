@@ -16,11 +16,11 @@ public class TipoUsuarioService {
         tipoUsuarioRepository = repo;
     }
 
-    public List<TipoUsuario> findAll(){
+    public List<TipoUsuario> listarTodos(){
         return tipoUsuarioRepository.findAll();
     }
 
-    public TipoUsuario cadastrarTipo(TipoUsuario tipoUsuario){
+    public TipoUsuario cadastrarTipoUser(TipoUsuario tipoUsuario){
         return tipoUsuarioRepository.save(tipoUsuario);
     }
 

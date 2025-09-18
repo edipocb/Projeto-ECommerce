@@ -11,7 +11,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/usuario")
-
 public class UsuarioController {
 
     private UsuarioService usuarioService;
@@ -28,11 +27,9 @@ public class UsuarioController {
 
     @PostMapping("/api/cadastrarUsuario")
     public ResponseEntity<Usuario> cadastrarUsuario(
-            @RequestBody Usuario usuario
-    ) {
+            @RequestBody Usuario usuario) {
+
+        usuarioService.cadastrarUsuario(usuario);
         return ResponseEntity.status(HttpStatus.CREATED).body(usuario);
     }
-
-
-
 }

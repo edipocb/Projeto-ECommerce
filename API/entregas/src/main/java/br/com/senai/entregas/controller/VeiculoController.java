@@ -25,7 +25,7 @@ public class VeiculoController {
         return ResponseEntity.ok().body(veiculo);
     }
 
-    
+
     @PostMapping("/api/cadastrarVeiculo")
     public ResponseEntity<Veiculo> cadastrarVeiculo(
             @RequestBody Veiculo veiculo) {

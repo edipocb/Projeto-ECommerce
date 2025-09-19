@@ -25,5 +25,18 @@ public class TipoUsuarioService {
     }
 
 
+    public TipoUsuario buscarPorId(Integer id) {
+        return tipoUsuarioRepository.findById(id).orElse(null);
+    }
+
+    public TipoUsuario deletarTipoUser(Integer id) {
+        TipoUsuario tipoUsuario = buscarPorId(id);
+
+        if (tipoUsuario == null) {
+            return null;
+        }
+        tipoUsuarioRepository.delete(tipoUsuario);
+        return tipoUsuario;
+    }
 
 }

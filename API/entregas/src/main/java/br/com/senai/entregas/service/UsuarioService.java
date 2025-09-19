@@ -25,6 +25,20 @@ public class UsuarioService {
         return usuarioRepository.save(usuario);
     }
 
+    public Usuario buscarPorId(Integer id){
+        return usuarioRepository.findById(id).orElse(null);
+    }
+
+    public Usuario deletarUsuario(Integer id) {
+        Usuario usuario = buscarPorId(id);
+
+        if (usuario == null) {
+            return null;
+        }
+        usuarioRepository.delete(usuario);
+        return usuario;
+    }
+
 
 
 }
